@@ -1,10 +1,15 @@
-def fib (n):
-	if n < 2:
-		return n
-	return fib(n-3)+fib(n-1)
+from functools import lru_cache
+
+@lru_cache(maxsize=1000)
+def fib(n):
+    if n==1:
+        return 0
+    elif n==2:
+        return 1
+    elif n>2:
+        return fib(n-1)+fib(n-2)
 
 
-n = input("Enter the number of times you want to input n :")
-for i in range (0,n):
-	a = input ("Enter number :")
-	print fib(a)
+n = int(input("Enter the number of times you want to input n :"))
+for i in range (0,n+1):
+	print (fib(i))
